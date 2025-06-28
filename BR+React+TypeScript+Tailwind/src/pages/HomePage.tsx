@@ -5,9 +5,16 @@ import logoImage2 from "/logo.png";
 import Navbar from "../components/Navbar";
 
 const BUFFERED_READERS_FOLDER_ID = "1inj0AM4qnEjLr88-7_SGGvQpuTv804rH";
+
+type PdfFile = {
+    id: string;
+    name: string;
+    [key: string]: any;
+};
+
 const HomePage = () => {
     const navigate = useNavigate();
-    const [latestPdf, setLatestPdf] = useState(null);
+    const [latestPdf, setLatestPdf] = useState<PdfFile | null>(null);
     const [isLoadingMagazine, setIsLoadingMagazine] = useState<boolean>(false);
 
     useEffect(() => {
@@ -35,7 +42,7 @@ const HomePage = () => {
                     <div className="mr-8 max-[900px]:mr-0 max-[900px]:mb-4">
                         <img src={logoImage2} alt="Journal Logo" className="w-[60px]" />
                     </div>
-                    <div className="text-center flex-grow">
+                    <div className="flex-grow text-center">
                         <p
                             className="text-[1.2rem] text-[#333] mb-2 font-normal tracking-[1.2px]"
                             style={{ fontFamily: "Inter, sans-serif" }}
@@ -82,8 +89,8 @@ const HomePage = () => {
                     <div className="flex bg-white rounded-[8px] overflow-hidden shadow-[2px_6px_8px_4px_rgba(0,0,0,0.25)] w-[70%] max-w-[500px] h-auto max-[900px]:flex-row max-[900px]:w-full max-[900px]:max-w-[450px] max-[900px]:mx-auto">
                         <div className="mt-[2rem] flex-1 p-[1.5rem] max-[900px]:flex-[1.2]">
                             <center>
-                                {/* <h3>{latestPdf ? latestPdf.name : " "}</h3> */}
-                                <h3>Name</h3>
+                                <h3 style={{ fontFamily: "Italiana", fontSize: "2rem" }}>{latestPdf ? latestPdf.name : " "}</h3>
+
                             </center>
                             <center>
                                 <button
@@ -104,7 +111,7 @@ const HomePage = () => {
                         <div className="flex-1 max-w-[45%] h-auto min-h-[220px] max-[900px]:h-[180px] max-[480px]:h-[200px]">
                             {latestPdf ? (
                                 <img
-                                    // src={`http://localhost:5003/thumbnail?fileId=${latestPdf.id}&nocache=${Date.now()}`}
+                                    src={`http://localhost:5003/thumbnail?fileId=${latestPdf.id}&nocache=${Date.now()}`}
                                     alt="Buffered Reader"
                                     className="w-full h-full object-cover max-[480px]:object-contain"
                                 />
@@ -149,7 +156,7 @@ const HomePage = () => {
 
             {/* Footer */}
             <footer
-                className="bg-[#333] text-white text-left py-6"
+                className="bg-[#333] text-white text-center py-6"
                 style={{ fontFamily: "Inter, sans-serif" }}
             >
                 <p>

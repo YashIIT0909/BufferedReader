@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../components/AboutPage";
 import Teams from "../components/Teams";
+import BufferedReadersPage from "../components/BufferedReadersPage";
+import ByteStreamPage from "../components/ByteStreamPage";
 export const Routes = createBrowserRouter([
     {
         path: "/", element: <HomePage />
@@ -11,5 +13,11 @@ export const Routes = createBrowserRouter([
     },
     {
         path: "/teams", element: <Teams />
+    },
+    {
+        path: "/buffered-readers", element: <BufferedReadersPage />
+    },
+    {
+        path: "/bytestreams", element: <ByteStreamPage />
     }
 ])

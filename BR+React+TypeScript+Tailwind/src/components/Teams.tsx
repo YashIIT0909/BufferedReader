@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-
-
-
 import Navbar from './Navbar.jsx';
 import teamMembers from "../StaticData/peopleData.json";
 
