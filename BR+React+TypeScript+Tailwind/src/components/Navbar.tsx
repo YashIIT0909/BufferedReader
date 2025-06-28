@@ -4,20 +4,8 @@ import logoImage1 from '/cse.png';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
     const [isSticky, setIsSticky] = useState(false);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 900);
-            if (window.innerWidth > 900) {
-                setIsMenuOpen(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -39,10 +27,10 @@ const Navbar = () => {
     return (
         <nav className={`relative w-full h-[118px] flex items-center z-1000 px-[50px] bg-[#FFFEF3] 
                 max-[900px]:flex-col max-[900px]:items-start max-[900px]:px-[20px] max-[900px]:h-auto max-[900px]: justify-between
-        ${isSticky ? ' fixed top-0 left-0 shadow-[0_2px_10px_rgba(0,0,0,0.1)]' : ''}`}>
+        ${isSticky ? ' sticky top-0 left-0 shadow-[0_2px_10px_rgba(0,0,0,0.1)]' : ''}`}>
             <div className=" w-[123px] h-[59px]">
                 <a href="https://cses.iitism.ac.in/" target="_blank" rel="noopener noreferrer">
-                    <img src={logoImage1} alt="CSE Logo" className='w-full h-full object-contain' />
+                    <img src={logoImage1} alt="CSE Logo" className='object-contain w-full h-full' />
                 </a>
             </div>
 

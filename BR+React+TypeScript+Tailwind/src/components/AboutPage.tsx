@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import cksir from "/professor/ck_sir.jpg";
 import sbsir from "/professor/sb_sir.jpg";
@@ -7,19 +7,6 @@ import pbsir from "/professor/pb_coFIC.jpg";
 import Navbar from './Navbar.tsx';
 
 const AboutPage = () => {
-    const [isSticky, setIsSticky] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsSticky(window.scrollY > 115);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     return (
         <div className="w-full min-h-screen bg-[#FFFEF3]">
@@ -44,32 +31,32 @@ const AboutPage = () => {
                     Buffered Reader transcends the realm of a mere magazine, serving as a catalyst for intellectual curiosity and creativity within the CSE Society. We bridge the gap between theory and real-world application with insights into cutting-edge technological advancements. Our meticulously curated content ignites innovation, cultivates collaboration, and empowers readers with indispensable knowledge for both academic and professional triumphs. Ultimately, Buffered Reader cultivates a strong sense of community and champions lifelong learning in the ever-evolving world of Computer Science and Engineering.
                 </div>
             </div>
-            <div className="w-full flex justify-center items-center">
+            <div className="flex items-center justify-center w-full">
                 <section className="w-full py-20 px-5 bg-[#f9fafb]">
                     <div className="max-w-[900px] mx-auto text-center">
-                        <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
+                        <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-xl">
                             <img
                                 alt="testimonial"
-                                className="w-40 h-40 object-cover rounded-full border-2 border-gray-200 bg-gray-100 shadow-md mb-5"
+                                className="object-cover w-40 h-40 mb-5 bg-gray-100 border-2 border-gray-200 rounded-full shadow-md"
                                 src={cksir}
                             />
                             <h2
-                                className="text-base font-semibold text-gray-900 mb-1"
+                                className="mb-1 text-base font-semibold text-gray-900"
                                 style={{ fontFamily: 'Poppins, sans-serif' }}
                             >
                                 Prof. Chiranjeev Kumar
                             </h2>
                             <p
-                                className="text-sm text-gray-500 font-normal mb-4"
+                                className="mb-4 text-sm font-normal text-gray-500"
                                 style={{ fontFamily: 'Inter, sans-serif' }}
                             >
                                 Head: Department Of Computer Science and Engineering
                             </p>
 
-                            <span className="inline-block w-10 h-1 bg-indigo-700 rounded mx-auto my-5" />
+                            <span className="inline-block w-10 h-1 mx-auto my-5 bg-indigo-700 rounded" />
 
                             <p
-                                className="profile-description text-gray-800 text-base leading-relaxed mb-6"
+                                className="mb-6 text-base leading-relaxed text-gray-800 profile-description"
                                 style={{ fontFamily: 'Inter, sans-serif' }}
                             >
                                 As the Head of the Computer Science and Engineering Department, I am
@@ -100,20 +87,20 @@ const AboutPage = () => {
             </div>
 
             <hr className="my-8 border-t border-gray-200" />
-            <div className="w-full flex justify-center items-center">
+            <div className="flex items-center justify-center w-full">
                 <section>
                     <div className="container">
-                        <div className="text-center w-[900px] mx-auto">
+                        <div className="text-center max-w-[900px] mx-auto">
                             <div className="flex justify-center gap-10 mb-6">
                                 <div className="image-wrapper">
                                     <img
                                         src={sbsir}
                                         alt="Prof. Soumen Bag"
-                                        className="w-40 h-40 rounded-full object-cover mb-2 mx-auto"
+                                        className="object-cover w-40 h-40 mx-auto mb-2 rounded-full"
                                     />
                                     <h2
                                         style={{ fontFamily: 'Poppins, sans-serif' }}
-                                        className="text-lg font-semibold m-0"
+                                        className="m-0 text-lg font-semibold"
                                     >
                                         Prof. Soumen Bag
                                     </h2>
@@ -122,11 +109,11 @@ const AboutPage = () => {
                                     <img
                                         src={pbsir}
                                         alt="Dr. Pranav Bisht"
-                                        className="w-40 h-40 rounded-full object-cover mb-2 mx-auto"
+                                        className="object-cover w-40 h-40 mx-auto mb-2 rounded-full"
                                     />
                                     <h2
                                         style={{ fontFamily: 'Poppins, sans-serif' }}
-                                        className="text-lg font-semibold m-0"
+                                        className="m-0 text-lg font-semibold"
                                     >
                                         Dr. Pranav Bisht
                                     </h2>
@@ -134,7 +121,7 @@ const AboutPage = () => {
                             </div>
 
                             <p
-                                className=" text-gray-600 font-normal text-base mb-4"
+                                className="mb-4 text-base font-normal text-gray-600 "
                                 style={{ fontFamily: 'Inter, sans-serif' }}
                             >
                                 Faculty Incharge & Co-Faculty Incharge: Buffered Reader
@@ -143,7 +130,7 @@ const AboutPage = () => {
                             <span className="block w-10 h-1 bg-[#63d9fa] rounded mx-auto my-8"></span>
 
                             <p
-                                className="text-gray-800 text-base leading-relaxed mb-6"
+                                className="mb-6 text-base leading-relaxed text-gray-800"
                                 style={{ fontFamily: 'Inter, sans-serif' }}
                             >
                                 As the faculty in charge and co-faculty in charge of Buffered Reader,
@@ -175,7 +162,7 @@ const AboutPage = () => {
 
             {/* Footer */}
             <footer
-                className=" bg-gray-800 text-white text-center py-6"
+                className="py-6 text-center text-white bg-gray-800 "
                 style={{ fontFamily: 'Inter, sans-serif' }}
             >
                 <p>
