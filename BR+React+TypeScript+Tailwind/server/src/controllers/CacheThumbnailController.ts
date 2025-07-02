@@ -6,7 +6,6 @@ import axios from 'axios';
 
 export const CacheThumbnailController = asyncHandler(async (req: Request, res: Response) => {
 
-
     const fileId = req.query.fileId;
     if (!fileId) {
         console.error("❌ Missing fileId in request");
@@ -15,11 +14,13 @@ export const CacheThumbnailController = asyncHandler(async (req: Request, res: R
     }
 
     const cacheKey = `thumbnail_${fileId}`;
-    const cachedImage = await getCache(cacheKey);
-    if (cachedImage) {
+    const cachedBase64 = await getCache(cacheKey);
+
+    if (cachedBase64) {
         console.log("✅ Serving thumbnail from cache");
+        const cachedBuffer = Buffer.from(cachedBase64, 'base64');
         res.setHeader("Content-Type", "image/jpeg");
-        res.json(cachedImage);
+        res.send(cachedBuffer);
         return;
     }
 
@@ -31,12 +32,12 @@ export const CacheThumbnailController = asyncHandler(async (req: Request, res: R
             res.status(404).send("No thumbnail found");
             return;
         }
-        const thumbnail = response.data;
-        console.log("✅ Fetched thumbnail from Google Drive API:", thumbnail);
+        const thumbnailBuffer = Buffer.from(response.data);
+        const base64Thumbnail = thumbnailBuffer.toString('base64');
 
-        await setCache(cacheKey, thumbnail);
+        await setCache(cacheKey, base64Thumbnail); // Store as base64 string
         res.setHeader("Content-Type", "image/jpeg");
-        res.send(thumbnail);
+        res.send(thumbnailBuffer);
 
     } catch (error) {
 

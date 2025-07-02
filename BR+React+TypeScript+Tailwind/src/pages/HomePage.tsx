@@ -20,7 +20,7 @@ const HomePage = () => {
     useEffect(() => {
         async function fetchLatestPdf() {
             try {
-                const url = `http://localhost:5003/pdfs?folderId=${BUFFERED_READERS_FOLDER_ID}`;
+                const url = `http://localhost:8000/api/pdfs?folderId=${BUFFERED_READERS_FOLDER_ID}`;
                 const response = await axios.get(url);
                 if (response.data.files.length > 0) {
                     setLatestPdf(response.data.files[0]);
@@ -100,7 +100,7 @@ const HomePage = () => {
                                         if (!latestPdf) return alert("No PDF available.");
                                         setIsLoadingMagazine(true);
                                         navigate("/pdf-viewer", {
-                                            // state: { pdfUrl: latestPdf.id },
+                                            state: { pdfUrl: latestPdf.id },
                                         });
                                     }}
                                 >
@@ -111,7 +111,7 @@ const HomePage = () => {
                         <div className="flex-1 max-w-[45%] h-auto min-h-[220px] max-[900px]:h-[180px] max-[480px]:h-[200px]">
                             {latestPdf ? (
                                 <img
-                                    src={`http://localhost:5003/thumbnail?fileId=${latestPdf.id}&nocache=${Date.now()}`}
+                                    src={`http://localhost:8000/api/thumbnail?fileId=${latestPdf.id}&nocache=${Date.now()}`}
                                     alt="Buffered Reader"
                                     className="w-full h-full object-cover max-[480px]:object-contain"
                                 />
