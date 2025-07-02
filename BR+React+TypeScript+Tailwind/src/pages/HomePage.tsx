@@ -156,7 +156,7 @@ const HomePage = () => {
 
             {/* Footer */}
             <footer
-                className="bg-[#333] text-white text-center py-6"
+                className="bg-[#333] text-white text-center  py-6"
                 style={{ fontFamily: "Inter, sans-serif" }}
             >
                 <p>

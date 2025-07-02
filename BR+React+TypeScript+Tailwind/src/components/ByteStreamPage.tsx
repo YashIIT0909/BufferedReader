@@ -39,7 +39,7 @@ const ByteStreamPage = () => {
     // 📌 Fetch Subfolders (2015-16, 2016-17)
     async function getSubfolders() {
         try {
-            const url = `http://localhost:5003/subfolders?folderId=${BUFFERED_READERS_FOLDER_ID}`;
+            const url = `http://localhost:8000/api/subfolders?folderId=${BUFFERED_READERS_FOLDER_ID}`;
             const response = await axios.get(url);
             if (response.status !== 200) throw new Error("Failed to fetch subfolders");
 
@@ -54,7 +54,7 @@ const ByteStreamPage = () => {
     // 📌 Fetch PDFs from a Given Folder
     async function getPdfsFromFolder(folderId: string) {
         try {
-            const url = `http://localhost:5003/pdfs?folderId=${folderId}`;
+            const url = `http://localhost:8000/api/pdfs?folderId=${folderId}`;
             const response = await axios.get(url);
             if (response.status !== 200)
                 throw new Error(`Failed to fetch PDFs for folder ${folderId}`);
@@ -191,7 +191,7 @@ const ByteStreamPage = () => {
                                                     </div>
                                                     <div className="flex-1 flex items-center justify-center max-w-auto h-auto max-[900px]:max-w-[45%] max-[900px]:h-[220px]">
                                                         <img
-                                                            src={`http://localhost:5003/thumbnail?fileId=${pdf.id}`}
+                                                            src={`http://localhost:8000/api/thumbnail?fileId=${pdf.id}`}
                                                             className="w-auto h-auto max-h-full object-contain max-[900px]:w-full max-[900px]:h-full"
                                                             alt="Buffered Reader"
                                                         />

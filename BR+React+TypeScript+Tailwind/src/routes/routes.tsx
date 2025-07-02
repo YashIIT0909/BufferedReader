@@ -4,6 +4,7 @@ import AboutPage from "../components/AboutPage";
 import Teams from "../components/Teams";
 import BufferedReadersPage from "../components/BufferedReadersPage";
 import ByteStreamPage from "../components/ByteStreamPage";
+import PdfViewer from "../components/FlipBook";
 export const Routes = createBrowserRouter([
     {
         path: "/", element: <HomePage />
@@ -19,5 +20,8 @@ export const Routes = createBrowserRouter([
     },
     {
         path: "/bytestreams", element: <ByteStreamPage />
+    },
+    {
+        path: "/pdf-viewer", element: <PdfViewer />
     }
 ])
